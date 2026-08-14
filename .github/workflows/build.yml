@@ -9,9 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -24,10 +21,10 @@ jobs:
       - name: Build binary
         run: |
           cd telegram-bot-api
-          mkdir build
+          mkdir -p build
           cd build
           cmake -DCMAKE_BUILD_TYPE=Release ..
-          cmake --build . --target telegram-bot-api
+          cmake --build . --target telegram-bot-api -- -j$(nproc)
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
