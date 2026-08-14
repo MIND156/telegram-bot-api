@@ -19,7 +19,7 @@ jobs:
 
       - name: Clone Telegram Bot API
         run: |
-          git clone --recursive https://github.com
+          git clone --recursive https://github.com/tdlib/telegram-bot-api.git
 
       - name: Build binary
         run: |
